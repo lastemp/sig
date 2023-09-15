@@ -197,6 +197,12 @@ pub const Client = struct {
         var params: [1][]const u8 = [1][]const u8{str};
         return try self.makeRequestWithJRpcResponse(types.BalanceInfo, [][]const u8, "getBalance", "1", &params);
     }
+	
+	pub fn getBalanceTest(self: *Self, str: []const u8) !jsonrpc.Response(types.BalanceInfo) {
+
+        var params: [1][]const u8 = [1][]const u8{str};
+        return try self.makeRequestWithJRpcResponse(types.BalanceInfo, [][]const u8, "getBalance", "1", &params);
+    }
 
     pub fn getBlockHeight(self: *Self) !jsonrpc.Response(u64) {
         return try self.makeRequestWithJRpcResponse(u64, ?u8, "getBlockHeight", "1", null);
